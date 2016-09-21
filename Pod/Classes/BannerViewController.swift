@@ -56,7 +56,7 @@ class BannerViewController: UIViewController {
         self.view.addSubview(_imageView)
         
         _tapAreaButton = UIButton()
-        _tapAreaButton.addTarget(self, action: "tapped:", forControlEvents: .TouchUpInside)
+        _tapAreaButton.addTarget(self, action: #selector(BannerViewController.tapped(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(_tapAreaButton)
         
         // set the constraint to layout the size

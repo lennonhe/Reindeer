@@ -110,7 +110,7 @@ public class BannerPageViewController: UIPageViewController, UIPageViewControlle
         if isBefore {
             
             // index should -1
-            currentIndex--
+            currentIndex -= 1
             if currentIndex == -1 {
                 nextIndex = images.count-1
             } else {
@@ -120,7 +120,7 @@ public class BannerPageViewController: UIPageViewController, UIPageViewControlle
         } else {
             
             // index should +1
-            currentIndex++
+            currentIndex += 1
             if currentIndex == images.count {
                 nextIndex = 0
             } else {
@@ -187,7 +187,7 @@ public class BannerPageViewController: UIPageViewController, UIPageViewControlle
     // MARK: Public Function
     
     func setInterval(interval:NSTimeInterval, block:()->Void) -> NSTimer {
-        return NSTimer.scheduledTimerWithTimeInterval(interval, target: NSBlockOperation(block: block), selector: "main", userInfo: nil, repeats: true)
+        return NSTimer.scheduledTimerWithTimeInterval(interval, target: NSBlockOperation(block: block), selector: #selector(NSOperation.main), userInfo: nil, repeats: true)
     }
     
     public func startRolling() {
