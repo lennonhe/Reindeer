@@ -28,6 +28,9 @@ public class BannerPageViewController: UIPageViewController, UIPageViewControlle
     
     private var _timer: NSTimer?
     
+    // a flag indicat whether transtion by user
+    private var transitioning: Bool = false
+    
     // MARK: Public Property
     
     // rolling images
@@ -167,6 +170,10 @@ public class BannerPageViewController: UIPageViewController, UIPageViewControlle
     }
     
     private func _autoNextPage() {
+        guard transitioning else {
+            return
+        }
+        
         if let currentBanner = viewControllers?.first as? BannerViewController {
             if let nextView = _nextViewController(currentBanner, isBefore: false) {
                 self.setViewControllers([nextView], direction: .Forward, animated: true, completion: { (finished) -> Void in
@@ -229,6 +236,7 @@ public class BannerPageViewController: UIPageViewController, UIPageViewControlle
     
     public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
         self._pauseRolling()
+        self.transitioning = true
     }
     
     public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
@@ -236,5 +244,6 @@ public class BannerPageViewController: UIPageViewController, UIPageViewControlle
         if let currentBanner = pageViewController.viewControllers?.first as? BannerViewController {
             _pageControl.currentPage = currentBanner.index
         }
+        self.transitioning = false
     }
 }
