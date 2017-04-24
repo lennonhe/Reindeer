@@ -25,7 +25,7 @@ class Issue2ViewController: UIViewController {
         
         if let bannerViewController = bannerViewController {
             contentView.addSubview(bannerViewController.view)
-            bannerViewController.view.snp_makeConstraints { (make) -> Void in
+            bannerViewController.view.snp.makeConstraints { (make) -> Void in
                 make.edges.equalTo(self.contentView)
             }
             
@@ -34,7 +34,7 @@ class Issue2ViewController: UIViewController {
             bannerViewController.placeholderImage = UIImage(named: "placeholder")
             
             bannerViewController.setRemoteImageFetche({ (imageView, url, placeHolderImage) -> Void in
-                imageView.kf_setImageWithURL(NSURL(string: url)!, placeholderImage: placeHolderImage)
+                imageView.kf.setImage(with: URL(string: url)!, placeholder: placeHolderImage, options: nil, progressBlock: nil, completionHandler: nil)
             })
             
             bannerViewController.images = [

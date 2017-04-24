@@ -1,20 +1,22 @@
 PODS:
-  - Kingfisher (1.8.2)
-  - Reindeer (0.1.0)
-  - SnapKit (0.15.0)
+  - Kingfisher (3.6.2)
+  - Reindeer (0.1.1)
+  - SnapKit (3.2.0)
 
 DEPENDENCIES:
-  - Kingfisher (~> 1.7)
+  - Kingfisher (~> 3.0)
   - Reindeer (from `../`)
-  - SnapKit (~> 0.15.0)
+  - SnapKit (~> 3.0)
 
 EXTERNAL SOURCES:
   Reindeer:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Kingfisher: b39315e9dbed7e8ffe73a9ca1be2ee006d1d57e4
-  Reindeer: eaf9cde7e454088ac946477bc0965fc25c2a8537
-  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
+  Reindeer: 732796cb76bef40c1ec726017533ec31c2b414a5
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: dacfef13d342fb974991f1445d5df4c2abb55c28
+
+COCOAPODS: 1.2.1

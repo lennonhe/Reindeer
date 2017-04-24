@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         
         if let anotherBanner = anotherBanner {
             anotherBannerWrap.addSubview(anotherBanner.view)
-            anotherBanner.view.snp_makeConstraints { (make) -> Void in
+            anotherBanner.view.snp.makeConstraints { (make) -> Void in
                 make.edges.equalTo(self.anotherBannerWrap)
             }
             
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
             anotherBanner.placeholderImage = UIImage(named: "placeholder")
             
             anotherBanner.setRemoteImageFetche({ (imageView, url, placeHolderImage) -> Void in
-                imageView.kf_setImageWithURL(NSURL(string: url)!, placeholderImage: placeHolderImage)
+                imageView.kf.setImage(with: URL(string: url)!, placeholder: placeHolderImage, options: nil, progressBlock: nil, completionHandler: nil)
             })
             
             anotherBanner.images = [
@@ -51,9 +51,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let banner = segue.destinationViewController as? BannerPageViewController {
+        if let banner = segue.destination as? BannerPageViewController {
             
             // (Optional) Set the rolling interval, 0 means no auto-rolling
             banner.interval = 5
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
             
             // (Optional, Need with Remote Images) Set remote image fetcher
             banner.setRemoteImageFetche({ (imageView, url, placeHolderImage) -> Void in
-                imageView.kf_setImageWithURL(NSURL(string: url)!, placeholderImage: placeHolderImage)
+                imageView.kf.setImage(with: URL(string: url)!, placeholder: placeHolderImage, options: nil, progressBlock: nil, completionHandler: nil)
             })
             
             // (Need) Set images
